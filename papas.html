@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <script src="ruffle/ruffle.js"></script>
+</head>
+<body>
+    <div id="ruffle-player"></div>
+
+    <script>
+      var ruffle = window.RufflePlayer.newest();
+      var player = ruffle.createPlayer({ width: 850, height: 600 });
+      var swf = "games/papaspizzeria_v2.swf";
+      player.load(swf);
+      document.getElementById("ruffle-player").appendChild(player);
+    </script>
+</body>
+</html>
