@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="bubble-container"></div>
+
     <img src="https://github.com/parrots-14/area-50.9/blob/main/assets/button.png?raw=true" width="850" height="125" class="games">
     <img src="https://github.com/parrots-14/area-50.9/blob/main/assets/button.png?raw=true" width="850" height="125" class="proxy">
     <img src="https://github.com/parrots-14/area-50.9/blob/main/assets/button.png?raw=true" width="850" height="125" class="something">
@@ -26,6 +28,27 @@
     <h1 class="somethingtext">Cat Ninja</h1>
     <h1 class="somethingdesc">The greatest game</h1>
     <h1 class="somethingicon">🐈</h1>
+    
+    <script>
+        function createBubble() {
+            let bubble = document.createElement("div");
+            bubble.classList.add("bubble");
+
+            let size = Math.random() * 40 + 20;
+            bubble.style.width = size + "px";
+            bubble.style.height = size + "px";
+            bubble.style.left = Math.random() * window.innerWidth + "px";
+            bubble.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+            document.getElementById("bubble-container").appendChild(bubble);
+
+            setTimeout(() => {
+                bubble.remove();
+            }, 6000);
+        }
+
+        setInterval(createBubble, 500);
+    </script>
 </body>
 
 <style>
@@ -34,6 +57,28 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-image: url('https://github.com/parrots-14/area-50.9/blob/main/assets/bubble1.png?raw=true');
+    background-size: cover;
+    opacity: 0.8;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+    }
 }
 
 .games, .proxy, .something {
