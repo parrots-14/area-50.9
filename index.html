@@ -5,8 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>area 50.999</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-image: url('https://raw.githubusercontent.com/parrots-14/area-50.9/main/assets/background.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://github.com/parrots-14/area-50.9/blob/main/assets/bubble1.png?raw=true');
+            background-size: cover;
+            opacity: 0.8;
+            animation: floatUp 5s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-120vh);
+                opacity: 0;
+            }
+        }
+
+        .games, .proxy, .something {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+        }
+
+        .games {
+            top: 50px;
+        }
+
+        .proxy {
+            top: 200px;
+        }
+
+        .something {
+            top: 352px;
+        }
+
+        a {
+            position: absolute;
+            width: 50%;
+            height: 125px;
+            background: transparent;
+            display: block;
+        }
+
+        .gamesbutton {
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .proxybutton {
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .somethingbutton {
+            top: 352px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .gamestext, .gamesdesc, .proxytext, .proxydesc, .somethingtext, .somethingdesc, .gamesicon, .proxyicon, .somethingicon {
+            position: absolute;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            font-family: verdana;
+        }
+
+        .gamestext {
+            top: 40px;
+            left: 630px;
+            font-size: 40px;
+        }
+
+        .gamesdesc {
+            top: 105px;
+            left: 630px;
+            font-size: 18px;
+        }
+
+        .proxytext {
+            top: 190px;
+            left: 630px;
+            font-size: 40px;
+        }
+
+        .proxydesc {
+            top: 255px;
+            left: 630px;
+            font-size: 18px;
+        }
+
+        .somethingtext {
+            top: 342px;
+            left: 630px;
+            font-size: 40px;
+        }
+
+        .somethingdesc {
+            top: 407px;
+            left: 630px;
+            font-size: 18px;
+        }
+
+        .gamesicon, .proxyicon, .somethingicon {
+            font-size: 64px;
+        }
+
+        .gamesicon {
+            top: 12px;
+            left: 520px;
+        }
+
+        .proxyicon {
+            top: 169px;
+            left: 520px;
+        }
+
+        .somethingicon {
+            top: 320px;
+            left: 520px;
+        }
+    </style>
 </head>
 <body>
+    <div id="bubble-container"></div>
+
     <img src="https://github.com/parrots-14/area-50.9/blob/main/assets/button.png?raw=true" width="850" height="125" class="games">
     <img src="https://github.com/parrots-14/area-50.9/blob/main/assets/button.png?raw=true" width="850" height="125" class="proxy">
     <img src="https://github.com/parrots-14/area-50.9/blob/main/assets/button.png?raw=true" width="850" height="125" class="something">
@@ -26,122 +166,26 @@
     <h1 class="somethingtext">Coming soon</h1>
     <h1 class="somethingdesc">I have no idea what to put here</h1>
     <h1 class="somethingicon">❓</h1>
+
+    <script>
+        function createBubble() {
+            let bubble = document.createElement("div");
+            bubble.classList.add("bubble");
+
+            let size = Math.random() * 40 + 20;
+            bubble.style.width = size + "px";
+            bubble.style.height = size + "px";
+            bubble.style.left = Math.random() * window.innerWidth + "px";
+            bubble.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+            document.getElementById("bubble-container").appendChild(bubble);
+
+            setTimeout(() => {
+                bubble.remove();
+            }, 6000);
+        }
+
+        setInterval(createBubble, 500);
+    </script>
 </body>
-
-<style>
-body {
-    background-image: url('https://raw.githubusercontent.com/parrots-14/area-50.9/main/assets/background.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-
-.games, .proxy, .something {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
-}
-
-.games {
-    top: 50px;
-}
-
-.proxy {
-    top: 200px;
-}
-
-.something {
-    top: 352px;
-}
-
-a {
-    position: absolute;
-    width: 50%;
-    height: 125px;
-    background: transparent;
-    display: block;
-}
-
-.gamesbutton {
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.proxybutton {
-    top: 200px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.somethingbutton {
-    top: 352px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.gamestext, .gamesdesc, .proxytext, .proxydesc, .somethingtext, .somethingdesc, .gamesicon, .proxyicon, .somethingicon {
-    position: absolute;
-    color: white;
-    text-shadow: 2px 2px 4px black;
-    font-family: verdana;
-}
-
-.gamestext {
-    top: 40px;
-    left: 630px;
-    font-size: 40px;
-}
-
-.gamesdesc {
-    top: 105px;
-    left: 630px;
-    font-size: 18px;
-}
-
-.proxytext {
-    top: 190px;
-    left: 630px;
-    font-size: 40px;
-}
-
-.proxydesc {
-    top: 255px;
-    left: 630px;
-    font-size: 18px;
-}
-
-.somethingtext {
-    top: 342px;
-    left: 630px;
-    font-size: 40px;
-}
-
-.somethingdesc {
-    top: 407px;
-    left: 630px;
-    font-size: 18px;
-}
-
-.gamesicon, .proxyicon, .somethingicon {
-    font-size: 64px;
-}
-
-.gamesicon {
-    top: 12px;
-    left: 520px;
-}
-
-.proxyicon {
-    top: 169px;
-    left: 520px;
-}
-
-.somethingicon {
-    top: 320px;
-    left: 520px;
-}
-
-</style>
 </html>
